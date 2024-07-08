@@ -2,17 +2,14 @@
 
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-// import LocomotiveScroll from "locomotive-scroll";
 export default function Template({ children }: { children: React.ReactNode }) {
-  const containerRef = useRef(null);
-  // const scroll = new LocomotiveScroll();
   useEffect(() => {
     (async () => {
       const LocomotiveScroll = (await import("locomotive-scroll")).default;
 
-      const locomotiveScroll = new LocomotiveScroll();
+      const locomotiveScroll = new LocomotiveScroll({ multiplier: 1 });
     })();
   }, []);
 
-  return <motion.div ref={containerRef} data-scroll data-scroll-speed="0.3">{children}</motion.div>;
+  return <motion.div>{children}</motion.div>;
 }
