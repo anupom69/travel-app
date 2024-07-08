@@ -63,9 +63,6 @@ const Camp = () => {
     target: section,
     offset: ["start 0.8", "start 0.1"],
   });
-  useEffect(() => {
-    scrollYProgress.on("change", (e) => console.log(e));
-  }, []);
   return (
     <motion.section
       ref={section}

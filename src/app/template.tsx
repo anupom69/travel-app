@@ -1,22 +1,18 @@
 "use client";
+
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+// import LocomotiveScroll from "locomotive-scroll";
 export default function Template({ children }: { children: React.ReactNode }) {
-  return (
-    <motion.div
-    //   initial={{
-    //     opacity:0,
-    //     x: 20
-    //   }}
-    //   animate={{
-    //     opacity: 1,
-    //     x: 0
-    //   }}
-    //   transition={{
-    //     ease: "easeInOut",
-    //     duration: .4
-    //   }}
-    >
-      {children}
-    </motion.div>
-  );
+  const containerRef = useRef(null);
+  // const scroll = new LocomotiveScroll();
+  useEffect(() => {
+    (async () => {
+      const LocomotiveScroll = (await import("locomotive-scroll")).default;
+
+      const locomotiveScroll = new LocomotiveScroll();
+    })();
+  }, []);
+
+  return <motion.div ref={containerRef} data-scroll data-scroll-speed="0.3">{children}</motion.div>;
 }
